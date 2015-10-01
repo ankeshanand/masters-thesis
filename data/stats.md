@@ -58,7 +58,8 @@ We use the Yelp dataset available from http://www.yelp.com/dataset_challenge/. T
 
 **Reviews with atleast 1 helpful vote:** 721385 (30%)
 
-## Distribution of Helpfulness Votes
+#### Distribution of Helpfulness Votes
+-------
 **Percentage of Votes:**
 ![Percentage](https://raw.githubusercontent.com/ankeshanand/masters-thesis/master/data/helpfulness-votes.png "Percentage Distribution")
 
