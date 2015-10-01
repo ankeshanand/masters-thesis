@@ -1,12 +1,12 @@
 
 # Datasets
----------------
+
 ### 1. Amazon Reviews Dataset
 
 We are using the Amazon product data available at http://jmcauley.ucsd.edu/data/amazon/ with appropriate permissions from the author. The complete dataset contains product reviews and metadata from Amazon, including 143.7 million reviews spanning May 1996 - July 2014. It  includes reviews (ratings, text, helpfulness votes), product metadata (descriptions, category information, price, brand, and image features), and links (also viewed/also bought graphs). 
 
-#### Sample Review:
-`
+##### Sample Review:
+```
 {
   "reviewerID": "A2SUAM1J3GNN3B",
   "asin": "0000013714",
@@ -18,9 +18,10 @@ We are using the Amazon product data available at http://jmcauley.ucsd.edu/data/
   "unixReviewTime": 1252800000,
   "reviewTime": "09 13, 2009"
 }
-`
+```
 
-#### The dataset also has reviews aggregated by different categories. For the rest of this notebook, we will consider only the product category: Cell Phones and Accessories.
+**The dataset also has reviews aggregated by different categories. For the rest of this notebook, we will consider only the product category: Cell Phones and Accessories.**
+
 
 ### 2. Yelp Dataset
 We use the Yelp dataset available from http://www.yelp.com/dataset_challenge/. The complete dataset contains:
@@ -30,7 +31,7 @@ We use the Yelp dataset available from http://www.yelp.com/dataset_challenge/. T
 * Aggregated check-ins over time for each of the 61K businesses.
 
 #### Sample Review:
-`
+```
 {
     'type': 'review',
     'business_id': (the identifier of the reviewed business),
@@ -44,18 +45,18 @@ We use the Yelp dataset available from http://www.yelp.com/dataset_challenge/. T
         'cool': (count of cool votes)
     }
 }
-`
+```
 
-##### Note that Yelp only provides the count of useful / funny / cool votes, and not a helpfulness score such as Amazon (2/3 users found this useful.)
+** Note that Yelp only provides the count of useful / funny / cool votes, and not a helpfulness score such as Amazon (2/3 users found this useful.) **
 
-# Statistics for the Amazon Dataset
-------------------
+## Statistics for the Amazon Dataset
 
-** Category: ** Cell Phone and Accessories
 
-** Total Number of Reviews from 2000 to 2013: ** 2396961
+**Category:** Cell Phone and Accessories
 
-** Reviews with atleast 1 helpful vote: ** 721385 (30%)
+**Total Number of Reviews from 2000 to 2013:** 2396961
+
+**Reviews with atleast 1 helpful vote:** 721385 (30%)
 
 ## Distribution of Helpfulness Votes
 **Percentage of Votes:**
