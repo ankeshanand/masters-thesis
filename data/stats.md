@@ -47,7 +47,7 @@ We use the Yelp dataset available from http://www.yelp.com/dataset_challenge/. T
 }
 ```
 
-** Note that Yelp only provides the count of useful / funny / cool votes, and not a helpfulness score such as Amazon (2/3 users found this useful.) **
+**Note that Yelp only provides the count of useful / funny / cool votes, and not a helpfulness score such as Amazon (2/3 users found this useful.)**
 
 ## Statistics for the Amazon Dataset
 
