@@ -22,7 +22,7 @@ is mapped to tags NEG and VICE.
 
 **6. Meta Data: (???)** 
 
-*If we use this, we are moving away from represting helpfulness purely as a property of text.*
+*If we use this, we are moving away from representing helpfulness purely as a property of text.*
 * Stars of a review
 
 
