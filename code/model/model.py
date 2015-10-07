@@ -1,23 +1,28 @@
 from extract_features import create_feature_results_matrix
 from sklearn.externals import joblib
+from sklearn.decomposition import TruncatedSVD
 
 datapath = '/home/ankesh/masters-thesis/data/reviews_Cell_Phones_and_Accessories.json.gz'
 
-X, y = create_feature_results_matrix(datapath)
-print 'Dumping matrices to disk.'
+# X, y = create_feature_results_matrix(datapath)
+#print 'Dumping matrices to disk.'
 filename_X = 'X.joblib.pkl'
 filename_y = 'y.joblib.pkl'
-_ = joblib.dump(X, filename_X, compress=9)
-_ = joblib.dump(y, filename_y, compress=9)
+#_ = joblib.dump(X, filename_X, compress=9)
+#_ = joblib.dump(y, filename_y, compress=9)
+print 'Loading matrices'
+X = joblib.load(filename_X)
+y = joblib.load(filename_y)
 
 from sklearn import svm
 from sklearn.svm import LinearSVR
 from sklearn.preprocessing import StandardScaler
 from sklearn import decomposition, pipeline, metrics, grid_search
 
+svd = TruncatedSVD(n_components=400)
 scl = StandardScaler(with_mean=False)
 svm_model = LinearSVR()
-clf = pipeline.Pipeline([('scl', scl),('svm', svm_model)])
+clf = pipeline.Pipeline([('svd', svd),('scl', scl),('svm', svm_model)])
 param_grid = {'svm__C': [1,3]}
 print 'Grid Search started'
 model_svm = grid_search.GridSearchCV(estimator = clf, param_grid=param_grid, scoring='mean_squared_error',n_jobs=-1, iid=True, refit=True, cv=10)
