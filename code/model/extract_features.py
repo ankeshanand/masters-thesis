@@ -15,8 +15,8 @@ def num_tokens(text):
 def average_length_of_sentences(text):
     n_sent = num_sentences(text)
     if n_sent == 0:
-	n_sent += 1
-	print text
+        n_sent += 1
+        print text
     n_tokens = num_tokens(text)
     return (1.0 * n_tokens) / (1.0 * n_sent)
 
@@ -34,9 +34,9 @@ def create_feature_results_matrix(datapath):
             if not rev['helpful']:
                 continue
             if rev['helpful'][1] == 0:
-				continue
+                continue
             if rev['reviewText'] == '':
-				continue
+                continue
             reviews.append(rev['reviewText'])
             helpfulness.append((1.0 * rev['helpful'][0]) / (1.0 * rev['helpful'][1]))
             text = rev['reviewText']
