@@ -48,11 +48,11 @@ def create_feature_results_matrix(datapath):
     print len(reviews)
     X_tfidf = tf_idf_matrix(reviews)
     print 'Computed the tf-idf matrix.'
-    df = pd.DataFrame({'reviewText': reviews, 'n_sentences': n_sentences, 'n_tokens': n_tokens, 'avg_length': avg_length})
+    df = pd.DataFrame({'reviewText': reviews, 'n_sentences': n_sentences, 'n_tokens': n_tokens, 'avg_length': avg_length, 'helpfulness': helpfulness})
 
     print 'Created the other features dataframe.'
     y = df['helpfulness']
-    df = df[['num_sentences', 'num_tokens', 'avg_length']]
+    df = df[['n_sentences', 'n_tokens', 'avg_length']]
     X_other = df.as_matrix()
     X = scipy.sparse.hstack([X_tfidf, X_other])
     print 'Stacked features, returning from method.'
