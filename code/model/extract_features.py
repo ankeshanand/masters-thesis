@@ -27,31 +27,28 @@ def tf_idf_matrix(reviews):
 def create_feature_results_matrix(datapath):
     reviews = []
     helpfulness = []
-	n_sentences, n_tokens, avg_length = [], [], []
+    n_sentences, n_tokens, avg_length = [], [], []
     with gzip.open(datapath, 'r') as f:
         for l in f:
             rev = ast.literal_eval(l.strip())
             if not rev['helpful']:
                 continue
-	    	if rev['helpful'][1] == 0:
+            if rev['helpful'][1] == 0:
 				continue
-	    	if rev['reviewText'] == '':
+            if rev['reviewText'] == '':
 				continue
             reviews.append(rev['reviewText'])
             helpfulness.append((1.0 * rev['helpful'][0]) / (1.0 * rev['helpful'][1]))
-			
+            text = rev['reviewText']
+            n_sentences.append(num_sentences(text))
+            n_tokens.append(num_tokens(text))
+            avg_length.append(average_length_of_sentences(text))
 
     print 'Parsing complete'
     print len(reviews)
     X_tfidf = tf_idf_matrix(reviews)
     print 'Computed the tf-idf matrix.'
-    df = pd.DataFrame(columns=('reviewText', 'num_sentences', 'num_tokens', 'avg_length', 'helpfulness'))
-    for i in range(len(reviews)):
-        reviewText = reviews[i]
-        n_sent = num_sentences(reviewText)
-        n_tokens = num_tokens(reviewText)
-        avg_length = average_length_of_sentences(reviewText)
-        df.loc[i] = [reviewText, num_sentences, num_tokens, avg_length, helpfulness[i]]
+    df = pd.DataFrame({'reviewText': reviews, 'n_sentences': n_sentences, 'n_tokens': n_tokens, 'avg_length': avg_length})
 
     print 'Created the other features dataframe.'
     y = df['helpfulness']
