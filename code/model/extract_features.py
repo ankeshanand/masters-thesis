@@ -21,7 +21,7 @@ def average_length_of_sentences(text):
     return (1.0 * n_tokens) / (1.0 * n_sent)
 
 def tf_idf_matrix(reviews):
-    vectorizer = TfidfVectorizer(min_df=3, stop_words='english')
+    vectorizer = TfidfVectorizer(min_df=4, stop_words='english', max_features=1000)
     return vectorizer.fit_transform(reviews)
 
 def create_feature_results_matrix(datapath):

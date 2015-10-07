@@ -5,15 +5,15 @@ from sklearn.cross_validation import cross_val_score
 
 datapath = '/home/ankesh/masters-thesis/data/reviews_Cell_Phones_and_Accessories.json.gz'
 
-# X, y = create_feature_results_matrix(datapath)
-#print 'Dumping matrices to disk.'
+X, y = create_feature_results_matrix(datapath)
+print 'Dumping matrices to disk.'
 filename_X = 'X.joblib.pkl'
 filename_y = 'y.joblib.pkl'
-#_ = joblib.dump(X, filename_X, compress=9)
-#_ = joblib.dump(y, filename_y, compress=9)
-print 'Loading matrices'
-X = joblib.load(filename_X)
-y = joblib.load(filename_y)
+_ = joblib.dump(X, filename_X, compress=9)
+_ = joblib.dump(y, filename_y, compress=9)
+#print 'Loading matrices'
+#X = joblib.load(filename_X)
+#y = joblib.load(filename_y)
 
 print X.shape
 
