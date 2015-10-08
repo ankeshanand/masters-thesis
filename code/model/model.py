@@ -3,20 +3,21 @@ from sklearn.externals import joblib
 from sklearn.decomposition import TruncatedSVD
 from sklearn.decomposition import RandomizedPCA
 from sklearn.cross_validation import cross_val_score
+from sklearn.preprocessing import Normalizer
 
 datapath = '/home/ankesh/masters-thesis/data/reviews_Cell_Phones_and_Accessories.json.gz'
 
 X, y = create_feature_results_matrix(datapath)
-print 'Dumping matrices to disk.'
+#print 'Dumping matrices to disk.'
 filename_X = 'X.joblib.pkl'
 filename_y = 'y.joblib.pkl'
 _ = joblib.dump(X, filename_X, compress=9)
 _ = joblib.dump(y, filename_y, compress=9)
-#print 'Loading matrices'
-#X = joblib.load(filename_X)
-#y = joblib.load(filename_y)
+print 'Loading matrices'
+X = joblib.load(filename_X)
+y = joblib.load(filename_y)
 
-X = X.toarray()
+#X = X.toarray()
 print X.shape
 
 from sklearn import svm
@@ -28,9 +29,13 @@ from sklearn import decomposition, pipeline, metrics, grid_search
 #pca = RandomizedPCA(n_components=200)
 #X_reduced = pca.fit_transform(X)
 
-print 'Standard Scaler'
-scl = StandardScaler()
-X_scaled = scl.fit_transform(X)
+#print 'Standard Scaler'
+#scl = StandardScaler()
+#X_scaled = scl.fit_transform(X)
+
+print 'Normalizer'
+nom = Normalizer(copy=False)
+X_normalized = nom.fit_transform(X)
 
 #svm_model = LinearSVR(C=3)
 #clf = pipeline.Pipeline([('svd', svd),('scl', scl),('svm', svm_model)])
@@ -47,6 +52,6 @@ sgd = SGDRegressor(loss='epsilon_insensitive')
 #from sklearn.ensemble import GradientBoostingRegressor
 #gbt = GradientBoostingRegressor()
 print 'Cross Validation started'
-scores = cross_val_score(sgd, X_scaled, y, cv=2, scoring='mean_squared_error', n_jobs=-1)
+scores = cross_val_score(sgd, X_normalized, y, cv=2, scoring='mean_squared_error', n_jobs=-1)
 print scores
 print scores.mean()
