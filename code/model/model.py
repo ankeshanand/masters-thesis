@@ -16,6 +16,7 @@ print 'Loading matrices'
 X = joblib.load(filename_X)
 y = joblib.load(filename_y)
 
+X = X.toarray()
 print X.shape
 
 from sklearn import svm
