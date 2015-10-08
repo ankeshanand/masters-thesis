@@ -1,19 +1,20 @@
 from extract_features import create_feature_results_matrix
 from sklearn.externals import joblib
 from sklearn.decomposition import TruncatedSVD
+from sklearn.decomposition import RandomizedPCA
 from sklearn.cross_validation import cross_val_score
 
 datapath = '/home/ankesh/masters-thesis/data/reviews_Cell_Phones_and_Accessories.json.gz'
 
-X, y = create_feature_results_matrix(datapath)
-print 'Dumping matrices to disk.'
+#X, y = create_feature_results_matrix(datapath)
+#print 'Dumping matrices to disk.'
 filename_X = 'X.joblib.pkl'
 filename_y = 'y.joblib.pkl'
-_ = joblib.dump(X, filename_X, compress=9)
-_ = joblib.dump(y, filename_y, compress=9)
-#print 'Loading matrices'
-#X = joblib.load(filename_X)
-#y = joblib.load(filename_y)
+#_ = joblib.dump(X, filename_X, compress=9)
+#_ = joblib.dump(y, filename_y, compress=9)
+print 'Loading matrices'
+X = joblib.load(filename_X)
+y = joblib.load(filename_y)
 
 print X.shape
 
@@ -23,8 +24,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn import decomposition, pipeline, metrics, grid_search
 
 print 'Truncated SVD'
-svd = TruncatedSVD(n_components=400)
-X_reduced = svd.fit_transform(X)
+pca = RandomizedPCA(n_components=200)
+X_reduced = pca.fit_transform(X)
 
 print 'Standard Scaler'
 scl = StandardScaler(with_mean=False)
