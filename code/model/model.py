@@ -24,13 +24,13 @@ from sklearn.svm import LinearSVR
 from sklearn.preprocessing import StandardScaler
 from sklearn import decomposition, pipeline, metrics, grid_search
 
-print 'Truncated SVD'
-pca = RandomizedPCA(n_components=200)
-X_reduced = pca.fit_transform(X)
+#print 'Truncated SVD'
+#pca = RandomizedPCA(n_components=200)
+#X_reduced = pca.fit_transform(X)
 
 print 'Standard Scaler'
-scl = StandardScaler(with_mean=False)
-X_scaled = scl.fit_transform(X_reduced)
+scl = StandardScaler()
+X_scaled = scl.fit_transform(X)
 
 #svm_model = LinearSVR()
 #clf = pipeline.Pipeline([('svd', svd),('scl', scl),('svm', svm_model)])
