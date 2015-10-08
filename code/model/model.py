@@ -32,7 +32,7 @@ print 'Standard Scaler'
 scl = StandardScaler()
 X_scaled = scl.fit_transform(X)
 
-#svm_model = LinearSVR()
+svm_model = LinearSVR()
 #clf = pipeline.Pipeline([('svd', svd),('scl', scl),('svm', svm_model)])
 #param_grid = {'svm__C': [1,3]}
 #print 'Grid Search started'
@@ -45,6 +45,6 @@ from sklearn.linear_model.stochastic_gradient import SGDRegressor
 sgd = SGDRegressor()
 
 print 'Cross Validation started'
-scores = cross_val_score(sgd, X_scaled, y, cv=2, scoring='mean_squared_error')
+scores = cross_val_score(svm, X_scaled, y, cv=2, scoring='mean_squared_error')
 print scores
 print scores.mean()
