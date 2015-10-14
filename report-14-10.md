@@ -40,7 +40,7 @@ is mapped to tags NEG and VICE.
 
 We model the problem of predicting review helpfulness score as a regression problem. We use SVMRegressor with linear kernel
 provided by scikit-learn, which is based on LibSVM. Performance is evaluated by Root Mean Square Error (RMSE).
-Ten-fold cross-validation is performed for all experiments.
+Ten-fold cross-validation is performed for all experiments and the feature vectors were normalized before feeding into the model.
 
 | Feature       | RMSE Score |
 | ------------- | ------------- |
