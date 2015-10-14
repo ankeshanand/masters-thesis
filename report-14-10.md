@@ -2,7 +2,7 @@
 
 We are using the Amazon product data available at http://jmcauley.ucsd.edu/data/amazon/ with appropriate permissions from the author.
 Each review comes with users’ helpfulness votes and hence helpfulness score can be approximated using “X of Y approach.”
-A subset of the dataset is dataset is considered, which contains reviews between 1995 and 2013 that have atleast 5 votes.
+We consider the category **Cell Phone and Accessories** amd construct a subset of reviewss between 1995 and 2013 that have atleast 5 votes.
 The total number of reviews thus considered is **147638**.
 
 **Distribution of Helpflness scores:**
